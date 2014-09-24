@@ -20,9 +20,9 @@ public class GameConsole implements IGame{
 	private IBoard board;
 	
 	public GameConsole(String nickname,int difficulty){
-		board= new BoardConsole(initialize(nickname,difficulty));		
+		board= new BoardConsole(initialize(nickname,difficulty));
 		board.show();
-		play();	
+	
 	}
 	
 	@Override

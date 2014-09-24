@@ -35,6 +35,7 @@ public class Main {
                System.out.print("opcion: ");
                int difficulty = in.nextInt();                
                IGame game= new GameConsole(nickname,difficulty);
+               game.play();
      		} catch (InputMismatchException e) {
      			System.out.print("ingresa un numero cabezón.\nAhora tenes que arrancar el juego de nuevo -_-");
      		} 

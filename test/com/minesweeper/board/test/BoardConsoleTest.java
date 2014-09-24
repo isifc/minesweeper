@@ -16,7 +16,7 @@ public class BoardConsoleTest {
 	
 	
 	@BeforeClass
-	public static void init(){
+	public static void initBoardConsoleTest(){
 		board=new BoardConsole(HARD);
 	}
 	
@@ -46,6 +46,24 @@ public class BoardConsoleTest {
 			}
 		}
 		assertEquals(30, count);
+		
+	}
+	
+	
+	@Test
+	public void BoxDiscoveredTest(){
+		
+		Box[][] boxes=new Box[9][9];
+		for (int i = 0; i < boxes.length; i++) {	
+			for (int j = 0; j < boxes.length; j++) {
+				boxes[i][j]= new Box();
+				boxes[i][j].setMine(false);
+				boxes[i][j].setShowing(true);
+			}	
+		}
+		boxes[3][3].setMine(true);
+		board.setBoxes(boxes);
+		assertEquals(false, board.BoxDiscovered(3,3));// si tiene mina retorna false, xq asi corto el while del juego. 
 		
 	}
 	

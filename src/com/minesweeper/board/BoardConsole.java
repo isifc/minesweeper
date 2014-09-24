@@ -15,7 +15,8 @@ public class BoardConsole implements IBoard{
 	}
 
 	public void setBoxes(Box[][] boxes) {
-		this.boxes = boxes;
+		this.boxes=boxes;
+		
 	}
 
 	public int getQuantity() {
