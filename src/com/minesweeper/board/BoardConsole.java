@@ -27,13 +27,10 @@ public class BoardConsole implements IBoard{
 			a=30;
 		}
 		return a;
-		
 	}
 	
 	@Override
 	public void show(){
-		
-		
 		for (int i = 0; i < boxes.length; i++) {
 			
 			for (int j = 0; j < boxes.length; j++) {
@@ -47,10 +44,8 @@ public class BoardConsole implements IBoard{
 					System.out.print(" | "+" " );
 				}				
 			}
-			System.out.print("\n------------------------------------\n");
-					
+			System.out.print("\n------------------------------------\n");				
 		}
-		
 	}
 	
 	@Override
