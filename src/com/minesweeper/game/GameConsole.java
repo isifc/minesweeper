@@ -20,15 +20,12 @@ public class GameConsole implements IGame{
 	private IBoard board;
 	
 	public GameConsole(String nickname,int difficulty){
-		
-			
-		initialize(nickname,difficulty);	
-		
-		board= new BoardConsole(this.difficulty);		
+		board= new BoardConsole(initialize(nickname,difficulty));		
 		board.show();
 		play();	
 	}
 	
+	@Override
 	public void play(){
 		boolean bandera=true;
 		while (bandera) {			
@@ -54,18 +51,16 @@ public class GameConsole implements IGame{
 	}
 
 	@Override
-	public void initialize(String nickname,int difficulty) {
-		
-		this.nickname=nickname;
-		
+	public String initialize(String nickname,int difficulty) {	
+		this.nickname=nickname;	
 		if (difficulty==1){
 			this.difficulty=EASY;
 		}else if (difficulty==2){
 			this.difficulty=MEDIUM;
 		}else{
 			this.difficulty=HARD;
-		}
-	
+		}		
+		return this.difficulty;
 					
 	}	
 }

@@ -1,32 +1,49 @@
 package com.minesweeper.board;
 
 public class BoardConsole implements IBoard{
-	private Box[][] boxes; 
+	private Box[][] boxes;
+	private int quantity=0;
 		
 	public BoardConsole(String difficulty){		
 		this.boxes = new Box[9][9];	
-		putMines(initialize(difficulty));				
+		initialize(difficulty);
+		putMines();				
 	}
 	
+	public Box[][] getBoxes() {
+		return boxes;
+	}
+
+	public void setBoxes(Box[][] boxes) {
+		this.boxes = boxes;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	@Override
-	public int initialize(String difficulty) {
+	public void initialize(String difficulty) {
 			int a = 0;
 			for (int i = 0; i < boxes.length; i++) {	
-			for (int j = 0; j < boxes.length; j++) {
-				boxes[i][j]= new Box();					
-				boxes[i][j].setMine(false);
-				boxes[i][j].setShowing(false);
-			}
-			
+				for (int j = 0; j < boxes.length; j++) {
+					boxes[i][j]= new Box();					
+					boxes[i][j].setMine(false);
+					boxes[i][j].setShowing(false);
+				}	
 		}
 		if (difficulty == "EASY"){
-			a= 10;	
+			quantity= 10;	
 		}else if(difficulty=="MEDIUM"){
-			a=20;
+			quantity=20;
 		}else{
-			a=30;
+			quantity=30;
 		}
-		return a;
+		
 	}
 	
 	@Override
@@ -49,7 +66,7 @@ public class BoardConsole implements IBoard{
 	}
 	
 	@Override
-	public void putMines(int quantity){
+	public void putMines(){
 		 	
 		 	while (quantity > 0) {
 		 		int column=100;
@@ -96,6 +113,12 @@ public class BoardConsole implements IBoard{
 			}
 			
 		}
+		
+	}
+
+	@Override
+	public void minesNear() {
+		// TODO Auto-generated method stub
 		
 	}
 
