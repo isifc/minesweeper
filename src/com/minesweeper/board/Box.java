@@ -3,11 +3,19 @@ package com.minesweeper.board;
 public class Box {
 	
 	
-	private int MinesNear;
+	private int MinesNear=0;
 	private Boolean mine;
 	private Boolean showing;	
 	public Box(){
 		
+	}
+
+	public int getMinesNear() {
+		return MinesNear;
+	}
+
+	public void setMinesNear(int minesNear) {
+		MinesNear = minesNear;
 	}
 
 	public Boolean getMine() {

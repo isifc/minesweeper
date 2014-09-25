@@ -37,7 +37,7 @@ public class GameConsole implements IGame{
 		        int row = in.nextInt(); 		       	
 				bandera= board.BoxDiscovered(column, row);				
 			} catch (IndexOutOfBoundsException e) {				
-				System.out.print("ingreso invalido,numeros válidos del 0 al 8  \n");
+				System.out.print("ingreso invalido,numeros válidos del 1 al 9  \n");
 			}catch(InputMismatchException e){
 				System.out.print("ingreso invalido,solo ingrese números enteros por favor...  \n");
 			}
@@ -60,7 +60,6 @@ public class GameConsole implements IGame{
 		}else{
 			this.difficulty=HARD;
 		}		
-		return this.difficulty;
-					
+		return this.difficulty;			
 	}	
 }
