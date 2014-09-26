@@ -5,6 +5,7 @@ package com.minesweeper.board;
 public class BoardConsole implements IBoard{
 	private Box[][] boxes;
 	private int quantity=0;
+	private int count=81;
 		
 	public BoardConsole(String difficulty){		
 		this.boxes = new Box[9][9];	
@@ -32,8 +33,8 @@ public class BoardConsole implements IBoard{
 
 	@Override
 	public void initialize(String difficulty) {
-			int a = 0;
-			for (int i = 0; i < boxes.length; i++) {	
+		int a = 0;
+		for (int i = 0; i < boxes.length; i++) {	
 				for (int j = 0; j < boxes.length; j++) {
 					boxes[i][j]= new Box();					
 					boxes[i][j].setMine(false);
@@ -47,13 +48,14 @@ public class BoardConsole implements IBoard{
 		}else{
 			quantity=30;
 		}
+		count-=quantity;
 		
 	}
 	
 	@Override
 	public void show(){
 		//numeros arriba del tablero
-		System.out.print("   1   2   3   4   5   6   7   8   9");
+		System.out.print(" | 1   2   3   4   5   6   7   8   9");
 		System.out.print("\n--------------------------------------\n");	
 		for (int i = 0; i < boxes.length; i++) {
 		
@@ -120,12 +122,21 @@ public class BoardConsole implements IBoard{
 		}
 	}
 	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override 
 	public boolean BoxDiscovered(int column,int row){
 		 column--;
 		 row--;	
 		 if  (boxes[column][row].getShowing()==false){
 			 boxes[column][row].setShowing(true);
+			 count--;
 		 }
 		 
 		 if (boxes[column][row].getMine()==true){

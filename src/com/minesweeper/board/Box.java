@@ -1,13 +1,15 @@
 package com.minesweeper.board;
 
-public class Box {
+import javax.swing.JButton;
+
+public class Box extends JButton{
 	
 	
 	private int MinesNear=0;
 	private Boolean mine;
 	private Boolean showing;	
 	public Box(){
-		
+	
 	}
 
 	public int getMinesNear() {

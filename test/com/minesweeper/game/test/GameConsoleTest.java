@@ -14,13 +14,13 @@ public class GameConsoleTest {
 
 	@BeforeClass
 	public static void initGameConsoleTest(){
-		gameConsole= new GameConsole(nickname, difficulty);
+		gameConsole= new GameConsole();
 	}
 	
 	
 	@Test
 	public void initializeTest(){
-		assertEquals("HARD",gameConsole.initialize(nickname, difficulty));
+		assertEquals("HARD",gameConsole.initialize(difficulty));
 		
 	}
 

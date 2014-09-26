@@ -26,7 +26,7 @@ public class BoardConsoleTest {
 	public void initializeTest(){
 		int quantity=30;
 		board.initialize(HARD);
-		assertEquals("son iguales",board.getQuantity(), quantity);
+		assertEquals(board.getQuantity(), quantity);
 	}
 	
 	
