@@ -3,7 +3,7 @@ package com.minesweeper.board;
 
 public interface IBoard {
 	
-	public void initialize(String difficulty);	
+	public void initialize(int difficulty);	
 	public void show();
 	public void putMines();
 	public boolean BoxDiscovered(int column, int row) ;

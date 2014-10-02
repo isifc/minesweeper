@@ -1,13 +1,16 @@
 package com.minesweeper.board;
 
+import java.util.InputMismatchException;
+
 
 
 public class BoardConsole implements IBoard{
 	private Box[][] boxes;
 	private int quantity=0;
 	private int count=81;
+	private Difficulty dificulty;
 		
-	public BoardConsole(String difficulty){		
+	public BoardConsole(int difficulty){		
 		this.boxes = new Box[9][9];	
 		initialize(difficulty);
 		putMines();
@@ -32,21 +35,23 @@ public class BoardConsole implements IBoard{
 	}
 
 	@Override
-	public void initialize(String difficulty) {
+	public void initialize(int difficulty) {
 		int a = 0;
 		for (int i = 0; i < boxes.length; i++) {	
 				for (int j = 0; j < boxes.length; j++) {
 					boxes[i][j]= new Box();					
-					boxes[i][j].setMine(false);
-					boxes[i][j].setShowing(false);
+					
 				}	
 		}
-		if (difficulty == "EASY"){
-			quantity= 10;	
-		}else if(difficulty=="MEDIUM"){
-			quantity=20;
+		if (difficulty == 1){
+			this.quantity= 10;
+			this.dificulty=Difficulty.EASY;
+		}else if(difficulty==2){
+			this.quantity=20;
+			this.dificulty=Difficulty.MEDIUM;
 		}else{
-			quantity=30;
+			this.quantity=30;
+			this.dificulty=Difficulty.HARD;
 		}
 		count-=quantity;
 		
@@ -134,16 +139,26 @@ public class BoardConsole implements IBoard{
 	public boolean BoxDiscovered(int column,int row){
 		 column--;
 		 row--;	
-		 if  (boxes[column][row].getShowing()==false){
-			 boxes[column][row].setShowing(true);
-			 count--;
-		 }
-		 
-		 if (boxes[column][row].getMine()==true){
-			 return false;
-		 }else{
+		 //ver como meto la exception
+		 try {
+			 if  (boxes[column][row].getShowing()==false){
+				 boxes[column][row].setShowing(true);
+				 count--;
+			 }
+			 
+			 if (boxes[column][row].getMine()==true){
+				 return false;
+			 }else{
+				 return true;
+			 }
+		} catch (IndexOutOfBoundsException e) {				
+			System.out.print("ingreso invalido,numeros válidos del 1 al 9  \n");
+			return true;
+		}catch(InputMismatchException e){
+			System.out.print("ingreso invalido,solo ingrese números enteros por favor...  \n");
 			 return true;
-		 }
+		}
+		
 		
 	 }
 	
@@ -220,7 +235,11 @@ public class BoardConsole implements IBoard{
         return quantityMines;
 }
 
-
+	enum Difficulty{
+		EASY,
+		MEDIUM,
+		HARD;
+	}
 
 
 }

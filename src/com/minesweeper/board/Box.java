@@ -5,20 +5,37 @@ import javax.swing.JButton;
 public class Box extends JButton{
 	
 	
-	private int MinesNear=0;
+	private int minesNear;
 	private Boolean mine;
 	private Boolean showing;	
-	public Box(){
+	
+	//constructor por defecto... 
+	public Box(){//tengo que probar los constructores
+		setMinesNear(0);
+		setMine(false);
+		setShowing(false);
 	
 	}
+	
+	public Box(Boolean mine, Boolean shwing){//tengo que probar los constructores
+		setMinesNear(0);
+		setMine(mine);
+		setShowing(shwing);
+	
+	}
+	
 
 	public int getMinesNear() {
-		return MinesNear;
+		return minesNear;
 	}
 
+
+
 	public void setMinesNear(int minesNear) {
-		MinesNear = minesNear;
+		this.minesNear = minesNear;
 	}
+
+
 
 	public Boolean getMine() {
 		return mine;

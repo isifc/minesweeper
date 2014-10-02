@@ -2,26 +2,25 @@ package com.minesweeper.game.test;
 
 import static org.junit.Assert.*;
 
-import org.junit.BeforeClass;
+import java.util.InputMismatchException;
+
 import org.junit.Test;
 
 import com.minesweeper.game.GameConsole;
 
 public class GameConsoleTest {
-	static GameConsole gameConsole;
-	static String nickname="facu";
-	static int difficulty=3;
-
-	@BeforeClass
-	public static void initGameConsoleTest(){
-		gameConsole= new GameConsole();
-	}
-	
+	GameConsole game;
 	
 	@Test
-	public void initializeTest(){
-		assertEquals("HARD",gameConsole.initialize(difficulty));
+	public void GameConsoleTest(){
 		
 	}
+	
+	@Test
+	public void playTest(){
+		
+	}
+	
+	
 
 }

@@ -17,24 +17,23 @@ public class BoardConsoleTest {
 	
 	@BeforeClass
 	public static void initBoardConsoleTest(){
-		board=new BoardConsole(HARD);
+		board=new BoardConsole(3);
 	}
 	
 	
 	//pruebo si asigne la cantidad de minas que quiero segun la dificultad esperada
 	@Test
 	public void initializeTest(){
-		int quantity=30;
-		board.initialize(HARD);
-		assertEquals(board.getQuantity(), quantity);
+		
+		board.initialize(3);
+		assertEquals(board.getQuantity(), 30);
 	}
-	
 	
 	
 	//pruebo si efectivamente pone 30 minas como quiero
 	@Test
 	public void putMinesTest(){
-		
+		board.initialize(3);
 		board.putMines();
 		int count=0;
 		Box[][] boxes = board.getBoxes();
@@ -56,8 +55,7 @@ public class BoardConsoleTest {
 		for (int i = 0; i < boxes.length; i++) {	
 			for (int j = 0; j < boxes.length; j++) {
 				boxes[i][j]= new Box();
-				boxes[i][j].setMine(false);
-				boxes[i][j].setShowing(true);
+				
 			}	
 		}
 		boxes[2][2].setMine(true);
@@ -65,6 +63,25 @@ public class BoardConsoleTest {
 		assertEquals(false, board.BoxDiscovered(3,3));// si tiene mina retorna false, xq asi corto el while del juego. 
 		
 	}
+	
+	//voy a probar si lanza la excepcion que necesito
+
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void BoxDiscoveredExceptionTest(){
+		
+		Box[][] boxes=new Box[9][9];
+		for (int i = 0; i < boxes.length; i++) {	
+			for (int j = 0; j < boxes.length; j++) {
+				boxes[i][j]= new Box();
+				
+			}	
+		}
+		board.setBoxes(boxes);
+		board.BoxDiscovered(50,200); 
+		
+	}
+	
+	
 	
 	//pruebo que cuente bien la cantidad de minas
 	@Test 
@@ -74,8 +91,7 @@ public class BoardConsoleTest {
 		for (int i = 0; i < boxes.length; i++) {	
 			for (int j = 0; j < boxes.length; j++) {
 				boxes[i][j]= new Box();
-				boxes[i][j].setMine(false);
-				boxes[i][j].setShowing(true);
+				
 			}	
 		}
 		
@@ -88,6 +104,33 @@ public class BoardConsoleTest {
 		assertEquals(boxes, board.getBoxes());
 	}
 	
+	
+	@Test
+	public void countMinesTest(){
+		Box[][] boxes=new Box[9][9];
+		for (int i = 0; i < boxes.length; i++) {	
+			for (int j = 0; j < boxes.length; j++) {
+				if (i==0){
+					boxes[i][j]= new Box(true,false);
+				}else{
+					boxes[i][j]= new Box();
+				}		
+			}	
+		}
+		
+		board.setBoxes(boxes);
+		
+		for (int i = 0; i < boxes.length; i++) {
+			if (i == 0 || i== 8){
+				boxes[0][i].setMinesNear(1);
+			}else{
+				boxes[0][i].setMinesNear(2);
+			}
+			
+		}
+		board.countMines();
+		assertEquals(boxes, board.getBoxes());
+	}
 	
 	
 

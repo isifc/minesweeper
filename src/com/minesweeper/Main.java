@@ -1,6 +1,7 @@
 package com.minesweeper;
 
 import com.minesweeper.game.GameConsole;
+import com.minesweeper.game.GameDesktop;
 import com.minesweeper.game.IGame;
 
 public class Main {
@@ -11,6 +12,7 @@ public class Main {
 		if (conextion instanceof GameConsole){
 			((GameConsole) conextion).menu();
 		}
+		
 		
 	}	
 	
